@@ -7,6 +7,8 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import pages.AileButcemPage;
+import utils.ConfigReader;
 import utils.Driver;
 import utils.ReusableMethods;
 
@@ -15,6 +17,7 @@ import java.time.Duration;
 public class aileButcemStep {
    AndroidDriver<AndroidElement> driver=Driver.getAndroidDriver();
    TouchAction action=new TouchAction<>(driver);
+   AileButcemPage page=new AileButcemPage();
     @Given("Kullanici kurulumlari tamamlar")
     public void kullanici_kurulumlari_tamamlar() {
         Driver.getAndroidDriver();
@@ -30,13 +33,18 @@ public class aileButcemStep {
         }
         ReusableMethods.scrollWithUiScrollable(girisyap);
     }
-    @Then("mail ve password bilgilerini girerek kullanici bilgileriyle giris yapin")
-    public void mail_ve_password_bilgilerini_girerek_kullanici_bilgileriyle_giris_yapin() {
 
+
+    @Then("{string} ve {string} bilgilerini girerek kullanici bilgileriyle {string}")
+    public void veBilgileriniGirerekKullaniciBilgileriyle(String mail, String sifre, String girisyap) {
+        page.mailBox.sendKeys(ConfigReader.getProperty(mail));
+        page.passwordBox.sendKeys(ConfigReader.getProperty(sifre));
+        ReusableMethods.scrollWithUiScrollable(girisyap);
     }
     @Then("uygulamaya kullanici bilgileriyle giris yapildigini dogrulayin")
     public void uygulamaya_kullanici_bilgileriyle_giris_yapildigini_dogrulayin() {
-
+        ReusableMethods.wait(1);
+       page.girisBasariliMethodu();
     }
     @Then("sol kisimdaki menuden hesabim bolumune gidin")
     public void sol_kisimdaki_menuden_hesabim_bolumune_gidin() {
@@ -50,6 +58,7 @@ public class aileButcemStep {
     public void ardindan_degisiklerin_yapildigini_dogrulayin() {
 
     }
+
 
 
 }
