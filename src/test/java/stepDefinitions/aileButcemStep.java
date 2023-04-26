@@ -7,9 +7,8 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import pages.AileButcemPage;
+import pages.AppPage.AileButcemPage;
 import utils.ConfigReader;
-import utils.BrowserDriver;
 import utils.Driver;
 import utils.ReusableMethods;
 
