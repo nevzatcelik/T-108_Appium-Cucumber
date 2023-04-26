@@ -8,7 +8,7 @@ Feature:  Aile Butcem Login Page Test
      Then "mail" ve "password" bilgilerini girerek kullanici bilgileriyle "Giriş Yap"
      Then uygulamaya kullanici bilgileriyle giris yapildigini dogrulayin
      Then sol kisimdaki menuden "Hesabım" bolumune gidin
-     Then hesabim sayfasindaki bilgileri degistirerek degisikleri kaydedin
+     Then hesabim sayfasindaki bilgileri "isim" "soyisim" "sehir" "yas" "meslek" degistirerek degisikleri kaydedin
       And ardindan degisiklerin yapildigini dogrulayin
 
 

@@ -5,10 +5,14 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.ConfigReader;
 import utils.Driver;
+import utils.ReusableMethods;
 
 import java.security.cert.X509Certificate;
 import java.time.Duration;
+
+import static org.junit.Assert.assertEquals;
 
 public class AileButcemPage {
     public AileButcemPage() {
@@ -28,24 +32,69 @@ public class AileButcemPage {
     public MobileElement solUstMenu;
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
-    public MobileElement isimKutusu;
+    private MobileElement isimKutusu;
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
-    public MobileElement soyisimKutusu;
+    private MobileElement soyisimKutusu;
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[3]")
-    public MobileElement sehirKutusu;
+    private MobileElement sehirKutusu;
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[4]")
-    public MobileElement yasKutusu;
+    private MobileElement yasKutusu;
 
     @FindBy(xpath = "(//*[@class='android.widget.EditText'])[5]")
-    public MobileElement meslekKutusu;
+    private MobileElement meslekKutusu;
+
+    public void hesabimBilgiDegisikligi(String isim,String soyisim,String sehir,String yas,String meslek){
+        isimKutusu.clear();
+        isimKutusu.sendKeys(isim);
+
+        soyisimKutusu.clear();
+        soyisimKutusu.sendKeys(soyisim);
+
+        sehirKutusu.clear();
+        sehirKutusu.sendKeys(sehir);
+
+        yasKutusu.clear();
+        yasKutusu.sendKeys(yas);
+
+        meslekKutusu.clear();
+        meslekKutusu.sendKeys(meslek);
+
+        ReusableMethods.scrollWithUiScrollable("Kaydet");
+    }
+
+    public void hesapBilgiDegisikliAssert(){
+        String actualIsim=isimKutusu.getText();
+        String expected= ConfigReader.getProperty("isim");
+        assertEquals("bilgiler Uyusmuyor",expected,actualIsim);
+
+
+        String actualSoyisim=soyisimKutusu.getText();
+        String expectedSoyisim=ConfigReader.getProperty("soyisim");
+       assertEquals("bilgiler Uyusmuyor",expectedSoyisim,actualSoyisim);
+
+
+       String actualSehir=sehirKutusu.getText();
+       String expectedSehir=ConfigReader.getProperty("sehir");
+       assertEquals("BILGILER DOGRU DEGIL",expectedSehir,actualSehir);
+
+       String actualYas=yasKutusu.getText();
+       String expectedYas=ConfigReader.getProperty("yas");
+       assertEquals("bilgiler yanlisdur uasgum",expectedYas,actualYas);
+
+       String acutalMeslek=meslekKutusu.getText();
+       String expectedMeslek=ConfigReader.getProperty("meslek");
+       assertEquals("bilgiler uyusmaz",expectedMeslek,acutalMeslek);
+
+
+    }
 
     public void girisBasariliMethodu(){
         String actual=  girisBasariliText.getText();
         String expected="Başarıyla giriş yapıldı.";
-        Assert.assertEquals("Giris Basarisiz",expected,actual);
+        assertEquals("Giris Basarisiz",expected,actual);
 
     }
 }

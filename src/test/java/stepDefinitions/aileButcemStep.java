@@ -34,7 +34,6 @@ public class aileButcemStep {
         ReusableMethods.scrollWithUiScrollable(girisyap);
     }
 
-
     @Then("{string} ve {string} bilgilerini girerek kullanici bilgileriyle {string}")
     public void veBilgileriniGirerekKullaniciBilgileriyle(String mail, String sifre, String girisyap) {
         page.mailBox.sendKeys(ConfigReader.getProperty(mail));
@@ -48,16 +47,20 @@ public class aileButcemStep {
     }
     @Then("sol kisimdaki menuden {string} bolumune gidin")
     public void solKisimdakiMenudenBolumuneGidin(String hesabim) {
+       ReusableMethods.wait(6);
         page.solUstMenu.click();
         ReusableMethods.scrollWithUiScrollable(hesabim);
     }
-    @Then("hesabim sayfasindaki bilgileri degistirerek degisikleri kaydedin")
-    public void hesabim_sayfasindaki_bilgileri_degistirerek_degisikleri_kaydedin() {
+
+    @Then("hesabim sayfasindaki bilgileri {string} {string} {string} {string} {string} degistirerek degisikleri kaydedin")
+    public void hesabimSayfasindakiBilgileriDegistirerekDegisikleriKaydedin(String isim, String soyismim, String sehir, String yas, String meslegim) {
+    page.hesabimBilgiDegisikligi(ConfigReader.getProperty(isim),
+            ConfigReader.getProperty(soyismim),ConfigReader.getProperty(sehir),ConfigReader.getProperty(yas),ConfigReader.getProperty(meslegim));
 
     }
     @Then("ardindan degisiklerin yapildigini dogrulayin")
     public void ardindan_degisiklerin_yapildigini_dogrulayin() {
-
+     page.hesapBilgiDegisikliAssert();
     }
 
 
