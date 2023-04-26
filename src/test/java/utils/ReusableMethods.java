@@ -21,7 +21,7 @@ public class ReusableMethods {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
         // TakesScreenshot is an interface of selenium that takes the screenshot
-        TakesScreenshot ts = (TakesScreenshot)Driver.getAndroidDriver();
+        TakesScreenshot ts = (TakesScreenshot) Driver.getAndroidDriver();
 
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location

@@ -9,13 +9,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.AileButcemPage;
 import utils.ConfigReader;
+import utils.BrowserDriver;
 import utils.Driver;
 import utils.ReusableMethods;
 
 import java.time.Duration;
 
 public class aileButcemStep {
-   AndroidDriver<AndroidElement> driver=Driver.getAndroidDriver();
+   AndroidDriver<AndroidElement> driver= Driver.getAndroidDriver();
    TouchAction action=new TouchAction<>(driver);
    AileButcemPage page=new AileButcemPage();
     @Given("Kullanici kurulumlari tamamlar")
