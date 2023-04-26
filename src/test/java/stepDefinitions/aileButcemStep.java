@@ -46,9 +46,10 @@ public class aileButcemStep {
         ReusableMethods.wait(1);
        page.girisBasariliMethodu();
     }
-    @Then("sol kisimdaki menuden hesabim bolumune gidin")
-    public void sol_kisimdaki_menuden_hesabim_bolumune_gidin() {
-
+    @Then("sol kisimdaki menuden {string} bolumune gidin")
+    public void solKisimdakiMenudenBolumuneGidin(String hesabim) {
+        page.solUstMenu.click();
+        ReusableMethods.scrollWithUiScrollable(hesabim);
     }
     @Then("hesabim sayfasindaki bilgileri degistirerek degisikleri kaydedin")
     public void hesabim_sayfasindaki_bilgileri_degistirerek_degisikleri_kaydedin() {

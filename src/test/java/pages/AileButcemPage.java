@@ -24,6 +24,24 @@ public class AileButcemPage {
     @FindBy(xpath = "//*[@text='Başarıyla giriş yapıldı.']")
     private MobileElement girisBasariliText;
 
+    @FindBy(xpath = "(//*[@class='android.widget.ImageView'])[1]")
+    public MobileElement solUstMenu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
+    public MobileElement isimKutusu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
+    public MobileElement soyisimKutusu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[3]")
+    public MobileElement sehirKutusu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[4]")
+    public MobileElement yasKutusu;
+
+    @FindBy(xpath = "(//*[@class='android.widget.EditText'])[5]")
+    public MobileElement meslekKutusu;
+
     public void girisBasariliMethodu(){
         String actual=  girisBasariliText.getText();
         String expected="Başarıyla giriş yapıldı.";
