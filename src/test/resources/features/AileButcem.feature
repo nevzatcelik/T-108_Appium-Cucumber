@@ -1,6 +1,6 @@
 
 Feature:  Aile Butcem Login Page Test
-@wip
+
    Scenario: Kullanici aile butcem uygulamasina basarili bir sekilde giris yaparak ilgili gorevleri yerine getirir
 
      Given Kullanici kurulumlari tamamlar
