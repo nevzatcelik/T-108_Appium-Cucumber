@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         "html:target/cucumber-reports1.html"},
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@us02",
+        tags = "@smoke",
         dryRun = false
 )
 

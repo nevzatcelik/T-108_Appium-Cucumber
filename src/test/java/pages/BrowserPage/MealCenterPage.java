@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserDriver;
+import utils.ReusableMethods;
 
 public class MealCenterPage {
 
@@ -25,5 +26,24 @@ public class MealCenterPage {
     @FindBy(xpath = "(//img[@class='img-200'])[1]")
     public WebElement headerLogo;
 
+    @FindBy(xpath = "//*[@type='text']")
+    public WebElement emailBox;
 
+    @FindBy(xpath = "//*[@type='password']")
+    public WebElement passwordBox;
+
+    @FindBy(xpath = "(//*[text()='Sign in'])[2]")
+    public WebElement signInLoginButton;
+
+    @FindBy(xpath = "//img[@class='img-30 rounded-pill lozad loaded']")
+    public WebElement loginCheck;
+
+    public void loginMethodu(String mail,String password){
+        emailBox.sendKeys(mail);
+        passwordBox.sendKeys(password);
+        signInLoginButton.click();
+    }
+
+    @FindBy(xpath = "(//*[text()=' Manage my account '])[2]")
+    public WebElement manageMyAccount;
 }
